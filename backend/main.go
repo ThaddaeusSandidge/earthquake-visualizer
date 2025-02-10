@@ -58,6 +58,12 @@ type Earthquake struct {
 }
 
 func main() {
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8000" // Default to 8000 if no PORT variable is set
+	}
+	
 	// Connect to the database
 	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
