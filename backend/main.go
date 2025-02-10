@@ -61,7 +61,7 @@ func main() {
 
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8000" // Default to 8000 if no PORT variable is set
+		port = "8080" // Default to 8000 if no PORT variable is set
 	}
 
 	// Connect to the database
