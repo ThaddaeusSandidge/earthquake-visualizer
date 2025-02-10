@@ -68,15 +68,6 @@ func main() {
 	// Ensure tables are created
 	initializeDatabase(db)
 
-	user := User{
-		Id:       1,
-		Name:     "Thad",
-		Email:    "thad@gmail.com",
-		Password: "password",
-	}
-
-	createUserPrivate(db, user)
-
 	// Create the main router
 	router := mux.NewRouter()
 
