@@ -63,7 +63,7 @@ func main() {
 	if port == "" {
 		port = "8000" // Default to 8000 if no PORT variable is set
 	}
-	
+
 	// Connect to the database
 	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
@@ -105,8 +105,8 @@ func main() {
 	corsRouter := enableCORS(jsonContentTypeMiddleware(router))
 
 	// Start the server
-	log.Println("Server running on port 8000...")
-	log.Fatal(http.ListenAndServe(":8000", corsRouter))
+	log.Printf("Server running on port %s...", port)
+	log.Fatal(http.ListenAndServe(":"+port, corsRouter))
 }
 
 func initializeDatabase(db *sql.DB) error {
