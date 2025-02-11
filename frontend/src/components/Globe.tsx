@@ -161,7 +161,7 @@ const GlobeComponent: React.FC<GlobeProps> = ({ earthquakes }) => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="absolute top-10 left-0 ml-4 transform bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg w-[400px] border border-white/20"
+            className="absolute top-15 left-0 ml-4 transform bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg w-[400px] border border-white/20"
           >
             <button
               onClick={() => setSelectedEarthquake(null)}
