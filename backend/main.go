@@ -141,11 +141,6 @@ func initializeDatabase(db *sql.DB) error {
 	if err != nil {
 		log.Fatalf("Error creating preferences table: %v", err)
 	}
-    _, err = db.Exec(`
-    DROP TABLE IF EXISTS earthquakes`)
-    if err != nil {
-        log.Fatalf("Error dropping earthquakes table: %v", err)
-    }
 
     // Create the earthquakes table if it doesn't exist
     _, err = db.Exec(`
@@ -165,7 +160,7 @@ func initializeDatabase(db *sql.DB) error {
         log.Fatalf("Error creating earthquakes table: %v", err)
     }
 
-    return loadEarthquakeData(db, "data/earthquakes.csv")
+    return nil
 
 }
 
