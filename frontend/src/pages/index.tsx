@@ -45,10 +45,23 @@ const Home: React.FC = () => {
     }));
     setIsModalOpen(false);
   };
-
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    console.log("Token removed from local storage");
+    window.location.href = "/";
+  };
   return (
     <main className="relative flex flex-wrap justify-center items-start min-h-screen bg-gray-100">
       <div className="w-full h-screen relative">
+        <div className="absolute top-0 left-0 m-4 z-20">
+          <button
+            onClick={handleLogout}
+            className="px-4 py-2 border border-indigo-500 text-indigo-500 bg-transparent rounded"
+          >
+            <p className="font-semibold text-sm">Logout</p>
+          </button>
+        </div>
+
         <Globe earthquakes={earthquakes} />
         <EarthquakeFilters
           filters={filters}

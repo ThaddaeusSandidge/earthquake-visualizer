@@ -105,19 +105,32 @@ const LoadPreferencesModal: React.FC<LoadPreferencesModalProps> = ({
                 onClick={() => loadPreference(pref)}
               >
                 <div>
-                  <h3 className="text-sm font-semibold text-white">
-                    {pref.name || "Details:"}
-                  </h3>
-                  <p className="text-xs text-white/80">
-                    Mag {pref.magnitude_min}-{pref.magnitude_max}, Depth{" "}
-                    {pref.depth_min}-{pref.depth_max} km
-                  </p>
-                  <p className="text-xs text-white/80">
-                    Start Date: {new Date(pref.time_start).toLocaleDateString()}
-                  </p>
-                  <p className="text-xs text-white/80">
-                    End Date: {new Date(pref.time_end).toLocaleDateString()}
-                  </p>
+                  <div className="grid grid-cols-2 gap-4 text-sm text-white/80">
+                    <div>
+                      <p className="font-semibold text-sm">Magnitude</p>
+                      <p className="text-sm">
+                        {pref.magnitude_min} - {pref.magnitude_max} ML
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm">Depth</p>
+                      <p className="text-sm">
+                        {pref.depth_min} - {pref.depth_max} km
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm">Start Date</p>
+                      <p className="text-sm">
+                        {new Date(pref.time_start).toLocaleDateString()}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm">End Date</p>
+                      <p className="text-sm">
+                        {new Date(pref.time_end).toLocaleDateString()}
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <button

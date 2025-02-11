@@ -518,13 +518,27 @@ func getEarthquakes(db *sql.DB) http.HandlerFunc {
         argID := 1
 
         if val, ok := query["time_start"]; ok {
+            timeStart, err := time.Parse(time.RFC3339, val[0])
+            if err != nil {
+                log.Println("Invalid time_start format:", val[0])
+                http.Error(w, "Invalid time_start format", http.StatusBadRequest)
+                return
+            }
+            log.Println("Parsed time_start:", timeStart)
             conditions = append(conditions, "time >= $"+strconv.Itoa(argID))
-            args = append(args, val[0])
+            args = append(args, timeStart)
             argID++
         }
         if val, ok := query["time_end"]; ok {
+            timeEnd, err := time.Parse(time.RFC3339, val[0])
+            if err != nil {
+                log.Println("Invalid time_end format:", val[0])
+                http.Error(w, "Invalid time_end format", http.StatusBadRequest)
+                return
+            }
+            log.Println("Parsed time_end:", timeEnd)
             conditions = append(conditions, "time <= $"+strconv.Itoa(argID))
-            args = append(args, val[0])
+            args = append(args, timeEnd)
             argID++
         }
         if val, ok := query["depth_min"]; ok {
